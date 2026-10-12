@@ -7,5 +7,8 @@
 node_modules/
 dist/
 
+# Local notes
+note/
+
 # Local logs
 *.log
