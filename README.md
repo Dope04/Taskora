@@ -115,3 +115,5 @@ README.md       Project overview and setup guide
 
 The frontend includes a working project-management UI with dashboard, projects, team, and task screens. The server is set up with Express, CORS, Clerk middleware, and environment configuration, but the application API routes are not yet implemented.
 
+This project is currently under active development, and this README is updated as features evolve.
+
