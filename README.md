@@ -1,24 +1,43 @@
 # Taskora
 
-Taskora is a project-management web app for organizing workspaces, projects, tasks, and team members. The interface includes a dashboard, project and task views, team pages, and project analytics.
+Taskora is a project management application for planning workspaces, projects, tasks, and team collaboration. The app includes a dashboard, project and task views, team management, and workspace analytics.
+
+## Overview
+
+The project is split into two separate npm apps:
+
+- `client/` — React + Vite frontend
+- `server/` — Express API server with Clerk authentication middleware
 
 ## Tech stack
 
-- React 19 and Vite
+- React 19
+- Vite
 - Tailwind CSS
 - Redux Toolkit
-- Clerk for authentication
-- Express 5 for the server
+- React Router
+- Clerk authentication
+- Express 5
+- Prisma (project dependency present in the server)
+
+## Features
+
+- Dashboard overview for project activity and stats
+- Project listing and detail views
+- Task detail and tracking screens
+- Team management and member collaboration views
+- Workspace/project analytics panels
+- Clerk-based sign-in flow and protected app layout
 
 ## Requirements
 
-- Node.js (20 or newer recommended)
+- Node.js 20 or newer
 - npm
 - A Clerk application for authentication
 
 ## Getting started
 
-The client and server are separate npm projects. Open a terminal in each directory and install its dependencies:
+Install dependencies for both apps:
 
 ```bash
 cd client
@@ -30,20 +49,25 @@ cd server
 npm install
 ```
 
-Create `client/.env` with your Clerk publishable key:
+### Environment variables
+
+Create a `client/.env` file and add your Clerk publishable key:
 
 ```env
 VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 ```
 
-Create `server/.env` with the Clerk keys:
+Create a `server/.env` file with your Clerk credentials:
 
 ```env
 CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
 CLERK_SECRET_KEY=your_clerk_secret_key
+PORT=5000
 ```
 
-Keep real keys private. Environment files are ignored by Git; do not commit secrets.
+Keep real credentials private. These files are ignored by Git and should never be committed.
+
+## Running the app
 
 Start the server in one terminal:
 
@@ -59,34 +83,35 @@ cd client
 npm run dev
 ```
 
-Vite prints the local client URL in the terminal (usually `http://localhost:5173`). The server listens on port `5000` by default; set `PORT` in `server/.env` to use another port. Its current `/` route is a health check that returns `Server is running...`.
+The Vite dev server usually runs at `http://localhost:5173`. The server listens on port `5000` by default and currently exposes a health-check route at `/` that returns `Server is running...`.
 
 ## Available scripts
 
-In `client/`:
+### Client scripts
 
 | Command | Description |
 | --- | --- |
 | `npm run dev` | Start the Vite development server |
-| `npm run build` | Build the client for production |
-| `npm run lint` | Run ESLint |
-| `npm run preview` | Preview a production build |
+| `npm run build` | Build the frontend for production |
+| `npm run lint` | Run ESLint on the client codebase |
+| `npm run preview` | Preview the production build locally |
 
-In `server/`:
+### Server scripts
 
 | Command | Description |
 | --- | --- |
-| `npm run server` | Start the server with Nodemon |
-| `npm start` | Start the server with Node.js |
+| `npm run server` | Start the API server with Nodemon |
+| `npm start` | Start the API server with Node.js |
 
 ## Project structure
 
 ```text
-client/   React frontend
-server/   Express server
+client/         React frontend
+server/         Express backend
+README.md       Project overview and setup guide
 ```
 
-## Note
+## Current status
 
-The Express server currently exposes a health-check route and Clerk middleware. Application API routes are not yet implemented.
-#
+The frontend includes a working project-management UI with dashboard, projects, team, and task screens. The server is set up with Express, CORS, Clerk middleware, and environment configuration, but the application API routes are not yet implemented.
+
